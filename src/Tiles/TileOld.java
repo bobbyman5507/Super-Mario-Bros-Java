@@ -1,29 +1,17 @@
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.geom.Ellipse2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import java.awt.Graphics2D;
+package Tiles;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
 
 //Bug class to define all properties of a game object
 
-public class Tiles
+public class TileOld
 {
 	
 	int xPos,yPos;
@@ -73,7 +61,7 @@ public class Tiles
 	//GameObjectConstructor constructor
 	//current parameters - x,y = center of object, c = color of object
 	//add any other needed parameters
-	public Tiles()
+	public TileOld()
 	{
 		//overworld floor creation
 		try

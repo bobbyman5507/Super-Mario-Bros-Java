@@ -1,21 +1,7 @@
+import Tiles.TileOld;
+
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.geom.Ellipse2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 
 //Bug class to define all properties of a game object
@@ -28,7 +14,7 @@ public class Background
 	final static int totalLength = 448;
 	private static int[][] status = new int[totalLength][30];
 	private static int[] xPosArray = new int[totalLength];
-	private static Tiles tile = new Tiles();
+	private static TileOld tile = new TileOld();
 	
 	
 	

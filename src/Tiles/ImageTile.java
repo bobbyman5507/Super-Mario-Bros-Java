@@ -3,7 +3,9 @@ package Tiles;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-
+/**
+ * @author Bobby Orbin
+ */
 public class ImageTile extends Tile
 {
     final private BufferedImage mainImg;

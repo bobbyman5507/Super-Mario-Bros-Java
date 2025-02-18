@@ -33,7 +33,7 @@ public class ImageTile extends Tile
     }
 
     /**
-     * Function to draw the colored tile(s) onto the
+     * Function to draw the Image tile(s) onto the
      * screen at the given position
      *
      * @param g2 Current graphics processor

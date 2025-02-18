@@ -27,10 +27,12 @@ public class MainGameClass extends JPanel implements Runnable, KeyListener, Mous
 	//**********************************************
 	//private global variables
 	private Image image;
-	
+
+	//public global constants
+
 	private Background background;
 	private static int gameState;
-	private Player Mario;	
+	public Player Mario;
 	
 	//Font
 	Font UI;

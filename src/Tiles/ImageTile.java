@@ -12,6 +12,20 @@ public class ImageTile extends Tile
 
     /**
      * Tile that displays an image at the location
+     * @param mainImg       The image for the tile
+     * @param xSize         the number of pixels of the tile in the X direction
+     * @param ySize         the number of pixels of the tile in the Y direction
+     * @param collision     can mario collide with the tile
+     * @param interactable  can mario collide with the tile
+     */
+    public ImageTile(BufferedImage mainImg, int xSize, int ySize, boolean collision, boolean interactable)
+    {
+        super(xSize,ySize,collision, interactable);
+        this.mainImg = mainImg;
+    }
+
+    /**
+     * Tile that displays an image at the location
      * @param mainImg The image for the tile
      * @param xSize the number of pixels of the tile in the X direction
      * @param ySize the number of pixels of the tile in the Y direction

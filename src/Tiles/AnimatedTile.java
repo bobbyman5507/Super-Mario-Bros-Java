@@ -20,13 +20,43 @@ public class AnimatedTile extends Tile
     /**
      * Tile that displays an animated image at the location
      *
-     * @param img1      The first image for the tile
-     * @param img2      The second image for the tile
-     * @param img3      The third image for the tile
-     * @param img4      The fourth image for the tile
-     * @param xSize     the number of pixels of the tile in the X direction
-     * @param ySize     the number of pixels of the tile in the Y direction
-     * @param collision can mario collide with the tile
+     * @param img1          The first image for the tile
+     * @param img2          The second image for the tile
+     * @param img3          The third image for the tile
+     * @param img4          The fourth image for the tile
+     * @param xSize         the number of pixels of the tile in the X direction
+     * @param ySize         the number of pixels of the tile in the Y direction
+     * @param collision     can mario collide with the tile
+     * @param interactable  If the tile can be interacted with by mario
+     */
+    public AnimatedTile(BufferedImage img1, BufferedImage img2, BufferedImage img3, BufferedImage img4,
+                        int xSize, int ySize, boolean collision, boolean interactable)
+    {
+        super(xSize, ySize, collision, interactable);
+
+        //setting up image iterator
+        LinkedList<BufferedImage> frames = new LinkedList<>();
+
+        frames.add(img1);
+        frames.add(img2);
+        frames.add(img3);
+        frames.add(img4);
+
+        this.animation = frames.iterator();
+
+        this.currentFrame = img1;
+    }
+
+    /**
+     * Tile that displays an animated image at the location
+     *
+     * @param img1          The first image for the tile
+     * @param img2          The second image for the tile
+     * @param img3          The third image for the tile
+     * @param img4          The fourth image for the tile
+     * @param xSize         the number of pixels of the tile in the X direction
+     * @param ySize         the number of pixels of the tile in the Y direction
+     * @param collision     can mario collide with the tile
      */
     public AnimatedTile(BufferedImage img1, BufferedImage img2, BufferedImage img3, BufferedImage img4,
                         int xSize, int ySize, boolean collision)

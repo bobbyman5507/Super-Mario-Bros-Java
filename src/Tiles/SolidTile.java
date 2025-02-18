@@ -2,16 +2,45 @@ package Tiles;
 
 import java.awt.*;
 
+/**
+ * @author Bobby Orbin
+ */
 public class SolidTile extends Tile
 {
     private final Color color;
 
-    public SolidTile(Color color, int xSize, int ySize, boolean collision )
+    /**
+     *
+     * @param color         The color of the tile
+     * @param xSize         the number of pixels of the tile in the X direction
+     * @param ySize         the number of pixels of the tile in the Y direction
+     * @param collision     can mario collide with the tile
+     * @param interactable  can mario collide with the tile
+     */
+    public SolidTile(Color color, int xSize, int ySize, boolean collision, boolean interactable)
+    {
+        super(xSize, ySize, collision, interactable);
+        this.color = color;
+    }
+
+    /**
+     * Tile of a singular color, defined by java.awt.color
+     * @param color         The color of the tile
+     * @param xSize         the number of pixels of the tile in the X direction
+     * @param ySize         the number of pixels of the tile in the Y direction
+     * @param collision     can mario collide with the tile
+     * @see java.awt.color
+     */
+    public SolidTile(Color color, int xSize, int ySize, boolean collision)
     {
         super(xSize, ySize, collision);
         this.color = color;
     }
 
+    /**
+     * gets the Color
+     * @return color
+     */
     public Color getColor()
     {
         return color;

@@ -11,7 +11,12 @@ import javax.imageio.ImageIO;
 
 //Bug class to define all properties of a game object
 
-public class TileOld
+/**
+ * Depreciated class that holds all images and rendering methods for them
+ * @author Bobby Orbin
+ * @deprecated
+ */
+public class Tiles
 {
 	
 	int xPos,yPos;
@@ -61,7 +66,7 @@ public class TileOld
 	//GameObjectConstructor constructor
 	//current parameters - x,y = center of object, c = color of object
 	//add any other needed parameters
-	public TileOld()
+	public Tiles()
 	{
 		//overworld floor creation
 		try

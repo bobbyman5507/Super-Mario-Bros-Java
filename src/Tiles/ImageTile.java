@@ -53,12 +53,13 @@ public class ImageTile extends Tile
      * @param g2 Current graphics processor
      * @param tileX the X position of the tile on the grid
      * @param tileY the Y position of the tile on the grid
+     * @param offset    The distance that mario has traveled since starting
      */
     @Override
-    public void draw(Graphics2D g2, int tileX, int tileY)
+    public void draw(Graphics2D g2, int tileX, int tileY, int offset)
     {
-        int xPos = (tileX * TILE_SIZE);
-        int yPos = (tileY * TILE_SIZE) + Y_BUFFER;
+        int xPos = (tileX * TILE_SIZE) - offset;
+        int yPos = ((tileY * TILE_SIZE) + Y_BUFFER);
 
         g2.drawImage(this.mainImg, xPos, yPos, this.getXSize(), this.getYSize(), null);
     }

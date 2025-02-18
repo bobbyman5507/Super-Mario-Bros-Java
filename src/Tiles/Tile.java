@@ -76,6 +76,7 @@ public abstract class Tile
      * @param g2 Current graphics processor
      * @param tileX the X position of the tile on the grid
      * @param tileY the Y position of the tile on the grid
+     * @param offset    The distance that mario has traveled since starting
      */
-    public abstract void draw(Graphics2D g2, int tileX, int tileY);
+    public abstract void draw(Graphics2D g2, int tileX, int tileY, int offset);
 }

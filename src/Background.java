@@ -1,11 +1,13 @@
-import Tiles.TileOld;
+import Tiles.Tiles;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 
 
-//Bug class to define all properties of a game object
-
+/**Bug class to define all properties of a game object
+ * @author Sophia Plonk
+ * @author Bobby Orbin
+ */
 public class Background
 {
 	//private global variables
@@ -14,7 +16,7 @@ public class Background
 	final static int totalLength = 448;
 	private static int[][] status = new int[totalLength][30];
 	private static int[] xPosArray = new int[totalLength];
-	private static TileOld tile = new TileOld();
+	private static Tiles tile = new Tiles();
 	
 	
 	

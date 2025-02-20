@@ -1,4 +1,4 @@
-package Tiles;
+package Render.Tiles;
 
 import java.awt.*;
 

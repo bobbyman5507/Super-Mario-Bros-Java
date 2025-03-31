@@ -53,12 +53,11 @@ public class AnimatedTile extends Tile
      * @param img1          The first image for the tile
      * @param img2          The second image for the tile
      * @param img3          The third image for the tile
-     * @param img4          The fourth image for the tile
      * @param xSize         the number of pixels of the tile in the X direction
      * @param ySize         the number of pixels of the tile in the Y direction
      * @param collision     can mario collide with the tile
      */
-    public AnimatedTile(BufferedImage img1, BufferedImage img2, BufferedImage img3, BufferedImage img4,
+    public AnimatedTile(BufferedImage img1, BufferedImage img2, BufferedImage img3,
                         int xSize, int ySize, boolean collision)
     {
         super(xSize, ySize, collision);
@@ -69,7 +68,6 @@ public class AnimatedTile extends Tile
         frames.add(img1);
         frames.add(img2);
         frames.add(img3);
-        frames.add(img4);
 
         this.animation = frames.iterator();
 

@@ -64,11 +64,11 @@ public class Level
 
 
         //loading level data lines into array
-        level = new Tile[maxLength][16];
+        level = new Tile[maxLength][14];
         char detChar;
         String[] segmentSplit;
 
-        for(int i = 1; i<16; i++)
+        for(int i = 1; i<14; i++)
         {
             int currPos = 0;
 
@@ -135,7 +135,7 @@ public class Level
 
     public void draw(Graphics2D g2, int offset)
     {
-        for(int y = 0; y<=16; y++)
+        for(int y = 0; y<=14; y++)
         {
             for(int x = 0; x<=maxLength; x++)
             {

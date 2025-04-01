@@ -22,9 +22,13 @@ public class Level
     private final HashMap<Integer, Tile> colorPalette;
     private final Tile[][] level;
 
-    public Level(String filename) throws FileNotFoundException
+    public Level(String filename)
     {
-        Scanner in = new Scanner(new File(filename));
+        try {
+            File levelFile = new File(filename);
+
+
+            Scanner in = new Scanner(levelFile);
 
         /*
         Level file format:
@@ -37,78 +41,68 @@ public class Level
         #<ID> - Single tile
         %<ID>,<Length>
         */
-        String currLine;
-        ArrayList<String> splitLine = new ArrayList<>();
+            String currLine;
+            ArrayList<String> splitLine = new ArrayList<>();
 
-        //loading line into string
-        currLine = in.nextLine();
-        splitLine = (ArrayList<String>) Arrays.asList(currLine.split("$"));
-
-        this.levelName = splitLine.getFirst();
-        this.sublevel = Integer.parseInt(splitLine.get(1));
-        this.maxLength = Integer.parseInt(splitLine.get(2));
-
-        //palette config
-        PaletteData currPalette = new PaletteData();
-        int paletteNum = Integer.parseInt(splitLine.get(3));
-
-        if (paletteNum == 1)
-        {
-            this.colorPalette = currPalette.getOverworld();
-        }
-        else
-        {
-            this.colorPalette = currPalette.getOverworld();
-        }
-
-
-
-        //loading level data lines into array
-        level = new Tile[maxLength][14];
-        char detChar;
-        String[] segmentSplit;
-
-        for(int i = 1; i<14; i++)
-        {
-            int currPos = 0;
-
-            //getting next line
+            //loading line into string
             currLine = in.nextLine();
-            splitLine = (ArrayList<String>) Arrays.asList(currLine.split("!"));
+            splitLine = (ArrayList<String>) Arrays.asList(currLine.split("$"));
 
-            //loop to get to end
-            for (String segment: splitLine)
-            {
-                detChar = segment.charAt(0);
+            this.levelName = splitLine.getFirst();
+            this.sublevel = Integer.parseInt(splitLine.get(1));
+            this.maxLength = Integer.parseInt(splitLine.get(2));
 
-                //concatenating and splitting the string up
-                segmentSplit = segment.substring(1).split(",");
+            //palette config
+            PaletteData currPalette = new PaletteData();
+            int paletteNum = Integer.parseInt(splitLine.get(3));
 
-                if(detChar == '#')
-                {
-                    if(!segmentSplit[0].equals("0"))
-                    {
-                        level[currPos][i] = colorPalette.get(Integer.parseInt(segmentSplit[0]));
-                        currPos++;
-                    }
-                }
-                else
-                {
-                    if(!segmentSplit[0].equals("0"))
-                    {
-                        for(int j = 0; j<Integer.parseInt(segmentSplit[0]); j++)
-                        {
-                            level[currPos][i] = colorPalette.get(Integer.parseInt(segmentSplit[1]));
+            if (paletteNum == 1) {
+                this.colorPalette = currPalette.getOverworld();
+            } else {
+                this.colorPalette = currPalette.getOverworld();
+            }
+
+
+            //loading level data lines into array
+            level = new Tile[maxLength][14];
+            char detChar;
+            String[] segmentSplit;
+
+            for (int i = 1; i < 14; i++) {
+                int currPos = 0;
+
+                //getting next line
+                currLine = in.nextLine();
+                splitLine = (ArrayList<String>) Arrays.asList(currLine.split("!"));
+
+                //loop to get to end
+                for (String segment : splitLine) {
+                    detChar = segment.charAt(0);
+
+                    //concatenating and splitting the string up
+                    segmentSplit = segment.substring(1).split(",");
+
+                    if (detChar == '#') {
+                        if (!segmentSplit[0].equals("0")) {
+                            level[currPos][i] = colorPalette.get(Integer.parseInt(segmentSplit[0]));
                             currPos++;
                         }
-                    }
-                    else
-                    {
-                        currPos += Integer.parseInt(segmentSplit[1]);
+                    } else {
+                        if (!segmentSplit[0].equals("0")) {
+                            for (int j = 0; j < Integer.parseInt(segmentSplit[0]); j++) {
+                                level[currPos][i] = colorPalette.get(Integer.parseInt(segmentSplit[1]));
+                                currPos++;
+                            }
+                        } else {
+                            currPos += Integer.parseInt(segmentSplit[1]);
 
+                        }
                     }
                 }
             }
+        }
+        catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 

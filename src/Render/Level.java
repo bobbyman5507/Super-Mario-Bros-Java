@@ -110,6 +110,20 @@ public class Level
             }
         }
     }
+
+    public boolean isSolid(int x, int y)
+    {
+        Tile currTile = level[x][y];
+
+        if(currTile == null)
+            return false;
+        else
+        {
+            return currTile.getCollision();
+        }
+    }
+
+
     public static class PaletteData
     {
         //key:

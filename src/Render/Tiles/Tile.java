@@ -70,6 +70,15 @@ public abstract class Tile
     }
 
     /**
+     * gets the current tile's collision value and if it can be colided
+     * @return Colission value
+     */
+    public boolean getCollision()
+    {
+        return collision;
+    }
+
+    /**
      * Function to draw the colored tile(s) onto the
      * screen at the given position
      *

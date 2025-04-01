@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Fonts" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Images" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Levels" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="JavaSE-16" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />

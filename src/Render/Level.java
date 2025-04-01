@@ -4,6 +4,7 @@ import Render.Tiles.ImageTile;
 import Render.Tiles.Tile;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -130,6 +131,21 @@ public class Level
     public Tile[][] getLevel()
     {
         return level;
+    }
+
+    public void draw(Graphics2D g2, int offset)
+    {
+        for(int y = 0; y<=16; y++)
+        {
+            for(int x = 0; x<=maxLength; x++)
+            {
+                if(level[x][y] != null)
+                {
+                    level[x][y].draw(g2, x, y, offset);
+                }
+            }
+        }
+
     }
 
 

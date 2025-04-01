@@ -1,5 +1,9 @@
 import javax.swing.JFrame;//access to the frame files
 
+/**
+ * @author Justin Vincent
+ * @author Bobby Orbin
+ */
 public class GameViewer  
 {
 	public static void main(String[] args)

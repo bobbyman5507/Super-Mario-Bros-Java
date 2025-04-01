@@ -198,7 +198,7 @@ public class Level
             {
                 e.printStackTrace();
             }
-            overworld.put(3, new ImageTile(floor, 32, 32, true));
+            overworld.put(3, new ImageTile(floor, 1, 1, true));
 
 
             //coin block frames
@@ -228,7 +228,7 @@ public class Level
             {
                 e.printStackTrace();
             }
-            overworld.put(5, new AnimatedTile(coinImg0,coinImg1,coinImg2, 32, 32, true));
+            overworld.put(5, new AnimatedTile(coinImg0,coinImg1,coinImg2, 1, 1, true));
 
 
 
@@ -259,7 +259,7 @@ public class Level
             {
                 e.printStackTrace();
             }
-            overworld.put(4, new AnimatedTile(questionImg0,questionImg1,questionImg2, 2, 32, true));
+            overworld.put(4, new AnimatedTile(questionImg0,questionImg1,questionImg2, 1, 1, true));
 
             //used question
             try
@@ -270,7 +270,7 @@ public class Level
             {
                 e.printStackTrace();
             }
-            overworld.put(8, new ImageTile(usedQuestionImg, 32, 32, true));
+            overworld.put(8, new ImageTile(usedQuestionImg, 1, 1, true));
 
 
             try
@@ -281,7 +281,7 @@ public class Level
             {
                 e.printStackTrace();
             }
-            overworld.put(9, new ImageTile(brickImg, 32, 32, true));
+            overworld.put(9, new ImageTile(brickImg, 1, 1, true));
 
 
             try
@@ -292,7 +292,7 @@ public class Level
             {
                 e.printStackTrace();
             }
-            overworld.put(11, new ImageTile(tileImg, 32, 32, true));
+            overworld.put(11, new ImageTile(tileImg, 1, 1, true));
 
 
             return overworld;

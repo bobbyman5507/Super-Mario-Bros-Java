@@ -18,8 +18,8 @@ public class Level
     private final String levelName;
     private final int maxLength;
     private final int sublevel;
-    private final HashMap<Integer, Tile> ColorPalette;
-    private final int[][] level;
+    private final HashMap<Integer, Tile> colorPalette;
+    private final Tile[][] level;
 
     public Level(String filename) throws FileNotFoundException
     {
@@ -47,34 +47,70 @@ public class Level
         this.sublevel = Integer.parseInt(splitLine.get(1));
         this.maxLength = Integer.parseInt(splitLine.get(2));
 
+        //palette config
+        PaletteData currPalette = new PaletteData();
+        int paletteNum = Integer.parseInt(splitLine.get(3));
+
+        if (paletteNum == 1)
+        {
+            this.colorPalette = currPalette.getOverworld();
+        }
+        else
+        {
+            this.colorPalette = currPalette.getOverworld();
+        }
 
 
-        //loading line into array
 
-        int currPos = 0;
+        //loading level data lines into array
+        level = new Tile[maxLength][16];
         char detChar;
+        String[] segmentSplit;
 
         for(int i = 1; i<16; i++)
         {
+            int currPos = 0;
+
             //getting next line
             currLine = in.nextLine();
             splitLine = (ArrayList<String>) Arrays.asList(currLine.split("!"));
 
             //loop to get to end
-            for (int j = 0; i < splitLine.size(); i++)
+            for (String segment: splitLine)
             {
-                detChar = splitLine.get(i).charAt(0);
+                detChar = segment.charAt(0);
+
+                //concatenating and splitting the string up
+                segmentSplit = segment.substring(1).split(",");
 
                 if(detChar == '#')
                 {
+                    if(!segmentSplit[0].equals("0"))
+                    {
+                        level[currPos][i] = colorPalette.get(Integer.parseInt(segmentSplit[0]));
+                        currPos++;
+                    }
+                }
+                else
+                {
+                    if(!segmentSplit[0].equals("0"))
+                    {
+                        for(int j = 0; j<Integer.parseInt(segmentSplit[0]); j++)
+                        {
+                            level[currPos][i] = colorPalette.get(Integer.parseInt(segmentSplit[1]));
+                            currPos++;
+                        }
+                    }
+                    else
+                    {
+                        currPos += Integer.parseInt(segmentSplit[1]);
 
+                    }
                 }
             }
-
-
         }
     }
-    public class PaletteData
+    public static class PaletteData
     {
         //key:
         //1 - test 1
@@ -139,7 +175,7 @@ public class Level
             {
                 e.printStackTrace();
             }
-            overworld.put(3, new ImageTile(floor, 2, 32, true));
+            overworld.put(3, new ImageTile(floor, 32, 32, true));
 
 
             //coin block frames
@@ -169,7 +205,7 @@ public class Level
             {
                 e.printStackTrace();
             }
-            overworld.put(4, new AnimatedTile(coinImg0,coinImg1,coinImg2, 2, 32, true));
+            overworld.put(5, new AnimatedTile(coinImg0,coinImg1,coinImg2, 32, 32, true));
 
 
 
@@ -200,6 +236,7 @@ public class Level
             {
                 e.printStackTrace();
             }
+            overworld.put(4, new AnimatedTile(questionImg0,questionImg1,questionImg2, 2, 32, true));
 
             //used question
             try
@@ -210,6 +247,8 @@ public class Level
             {
                 e.printStackTrace();
             }
+            overworld.put(8, new ImageTile(usedQuestionImg, 32, 32, true));
+
 
             try
             {
@@ -219,6 +258,8 @@ public class Level
             {
                 e.printStackTrace();
             }
+            overworld.put(9, new ImageTile(brickImg, 32, 32, true));
+
 
             try
             {
@@ -228,6 +269,7 @@ public class Level
             {
                 e.printStackTrace();
             }
+            overworld.put(11, new ImageTile(tileImg, 32, 32, true));
 
 
             return overworld;

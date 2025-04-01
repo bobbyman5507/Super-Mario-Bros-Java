@@ -123,6 +123,15 @@ public class Level
         }
     }
 
+    /**
+     * gets the 2d array of tiles which represents the level
+     * @return the level array
+     */
+    public Tile[][] getLevel()
+    {
+        return level;
+    }
+
 
     public static class PaletteData
     {

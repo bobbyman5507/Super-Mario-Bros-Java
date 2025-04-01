@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 /**Bug class to define all properties of a game object
  * @author Sophia Plonk
  * @author Bobby Orbin
+ * @deprecated
  */
 public class Background
 {

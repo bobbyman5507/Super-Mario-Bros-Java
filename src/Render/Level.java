@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 
 /**
  * @author Bobby Orbin
@@ -21,6 +22,7 @@ public class Level
     private final int sublevel;
     private final HashMap<Integer, Tile> colorPalette;
     private final Tile[][] level;
+    private final int HALF_DRAW_DISTANCE = 16;
 
     public Level(String filename)
     {
@@ -42,11 +44,10 @@ public class Level
         %<ID>,<Length>
         */
             String currLine;
-            ArrayList<String> splitLine = new ArrayList<>();
 
             //loading line into string
             currLine = in.nextLine();
-            splitLine = (ArrayList<String>) Arrays.asList(currLine.split("$"));
+            List<String> splitLine = Arrays.asList(currLine.split("\\$"));
 
             this.levelName = splitLine.getFirst();
             this.sublevel = Integer.parseInt(splitLine.get(1));
@@ -68,15 +69,17 @@ public class Level
             char detChar;
             String[] segmentSplit;
 
-            for (int i = 1; i < 14; i++) {
+            for (int i = 1; i < 14; i++)
+            {
                 int currPos = 0;
 
                 //getting next line
                 currLine = in.nextLine();
-                splitLine = (ArrayList<String>) Arrays.asList(currLine.split("!"));
+                splitLine = Arrays.asList(currLine.split("!"));
 
                 //loop to get to end
-                for (String segment : splitLine) {
+                for (String segment : splitLine)
+                {
                     detChar = segment.charAt(0);
 
                     //concatenating and splitting the string up
@@ -88,13 +91,14 @@ public class Level
                             currPos++;
                         }
                     } else {
-                        if (!segmentSplit[0].equals("0")) {
-                            for (int j = 0; j < Integer.parseInt(segmentSplit[0]); j++) {
-                                level[currPos][i] = colorPalette.get(Integer.parseInt(segmentSplit[1]));
+                        if (!segmentSplit[1].equals("0")) {
+                            for (int j = 0; j < Integer.parseInt(segmentSplit[1]); j++)
+                            {
+                                level[currPos][i] = colorPalette.get(Integer.parseInt(segmentSplit[0]));
                                 currPos++;
                             }
                         } else {
-                            currPos += Integer.parseInt(segmentSplit[1]);
+                            currPos += Integer.parseInt(segmentSplit[0]);
 
                         }
                     }
@@ -129,9 +133,21 @@ public class Level
 
     public void draw(Graphics2D g2, int offset)
     {
-        for(int y = 0; y<=14; y++)
+        //calculating the bounds of rendering
+        int startPoint = 0;
+        int endPoint = maxLength;
+
+        if(offset > HALF_DRAW_DISTANCE)
+            startPoint = offset-HALF_DRAW_DISTANCE;
+
+        if(offset + (2 * HALF_DRAW_DISTANCE) < maxLength)
+            endPoint = offset + (2 * HALF_DRAW_DISTANCE);
+
+
+
+        for(int y = 0; y<14; y++)
         {
-            for(int x = 0; x<=maxLength; x++)
+            for(int x = startPoint; x< endPoint; x++)
             {
                 if(level[x][y] != null)
                 {

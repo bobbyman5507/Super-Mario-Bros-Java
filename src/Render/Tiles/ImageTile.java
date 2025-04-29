@@ -61,6 +61,6 @@ public class ImageTile extends Tile
         int xPos = (tileX * TILE_SIZE) - offset;
         int yPos = ((tileY * TILE_SIZE) + Y_BUFFER);
 
-        g2.drawImage(this.mainImg, xPos, yPos, this.getXSize(), this.getYSize(), null);
+        g2.drawImage(this.mainImg, xPos, yPos, TILE_SIZE*this.getXSize(), TILE_SIZE*this.getYSize(), null);
     }
 }

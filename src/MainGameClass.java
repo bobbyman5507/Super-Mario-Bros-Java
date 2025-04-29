@@ -12,12 +12,15 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
+import Render.Level;
+import Render.Tiles.*;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.awt.Graphics2D;
 
 import java.awt.image.BufferedImage;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -372,11 +375,11 @@ public class MainGameClass extends JPanel implements Runnable, KeyListener, Mous
 		//recovering Graphics2D
 		Graphics2D g2 = (Graphics2D)g;
 		
-		background = new Background();
+		//background = new Background();
+		Level oneOne = new Level("Levels/test.lvl");
 
 
-		
-		//*******************************************
+        //*******************************************
 		//place all drawn shapes here
 		
 		//backdrop start
@@ -389,8 +392,9 @@ public class MainGameClass extends JPanel implements Runnable, KeyListener, Mous
 		Rectangle BG = new Rectangle(0,0,5000,5000);
 		g2.fill(BG);
 		//backdrop stop
-		
-		background.Draw(g2);
+
+		oneOne.draw(g2, Player.getOffset());
+//		background.Draw(g2);
 		
 		//UI
 		UI = new Font("Super Mario Bros. NES Regular", Font.PLAIN, 15); //make this to ./Fonts/UI-Font.ttf
